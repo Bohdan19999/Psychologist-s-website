@@ -1,0 +1,48 @@
+---
+active: "vidguky"
+permalink: "/vidguky/"
+title: "Відгуки про психолога Валентина Сваткова — Черкаси"
+description: "Реальні відгуки клієнтів про консультації психолога Валентина Сваткова у Черкасах: очно та онлайн, для України і закордону."
+canonical: "/vidguky/"
+---
+{% extends "base.njk" %}
+{% import "macros.njk" as m with context %}
+{% set testimonials = [
+  {"name": "Олена М.", "who": "Онлайн-консультації", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec lectus non arcu tempor cursus. Vivamus feugiat, lorem sit amet dictum vehicula, urna erat ultrices metus, id porttitor turpis erat ac sapien."},
+  {"name": "Ірина Т.", "who": "Очна консультація, м. Черкаси", "text": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
+  {"name": "Марія К.", "who": "Для українців за кордоном", "text": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt."},
+  {"name": "Наталія П.", "who": "Онлайн-консультації", "text": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident."},
+  {"name": "Світлана Д.", "who": "Очна консультація, м. Черкаси", "text": "Nulla facilisi. Curabitur blandit tempus porttitor. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper."},
+  {"name": "Юлія В.", "who": "Онлайн-консультації", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec lectus non arcu tempor cursus. Vivamus feugiat, lorem sit amet dictum vehicula."}
+] %}
+
+{% block head_extra %}
+{% breadcrumbJsonLd [{"label": "Головна", "href": "/"}, {"label": "Відгуки", "href": "/vidguky/"}] %}
+{% endblock %}
+
+{% block content %}
+<header class="page-header">
+  <div class="container">
+    {{ m.breadcrumbs([{"label": "Головна", "href": "/"}, {"label": "Відгуки"}]) }}
+    <span class="eyebrow">Соціальний доказ</span>
+    <h1>Відгуки клієнтів</h1>
+    <p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec lectus non arcu tempor cursus.</p>
+  </div>
+</header>
+<div class="container">
+  <section class="std-section">
+    <div class="grid grid-3">
+      {% for t in testimonials %}
+      <div class="card testimonial">
+        <div class="stars">★★★★★</div>
+        <p>«{{ t.text }}»</p>
+        <div class="who">{{ t.name }}<span>{{ t.who }}</span></div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  <section class="std-section">
+    {{ m.ctaBlock("Долучіться до тих, хто вже зробив крок", "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.") }}
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+---
+pagination:
+  data: "posts"
+  size: 1
+  alias: "post"
+permalink: "/blog/{{ post.slug }}/"
+active: "blog"
+ogType: "article"
+eleventyComputed:
+  canonical: "/blog/{{ post.slug }}/"
+  title: "{{ post.title }} — блог Валентина Сваткова"
+  description: "{{ post.seoDescription }}"
+---
+{% extends "base.njk" %}
+{% import "macros.njk" as m with context %}
+
+{% block head_extra %}
+{% blogPostingJsonLd post, "/blog/" + post.slug + "/" %}
+{% faqJsonLd post.faq %}
+{% breadcrumbJsonLd [{"label": "Головна", "href": "/"}, {"label": "Блог", "href": "/blog/"}, {"label": post.title, "href": "/blog/" + post.slug + "/"}] %}
+{% endblock %}
+
+{% block content %}
+<article>
+  <header class="page-header">
+    <div class="container">
+      {{ m.breadcrumbs([{"label": "Головна", "href": "/"}, {"label": "Блог", "href": "/blog/"}, {"label": post.title}]) }}
+      <h1>{{ post.title }}</h1>
+      <p class="article-meta">{{ post.dateDisplay }} · {{ post.readingTime }}</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="std-section">{{ post.bodyHtml | safe }}</section>
+
+    {{ m.faqBlock(post.faq) }}
+
+    {% if post.relatedServices and post.relatedServices.length %}
+    <aside class="related-posts std-section">
+      <h2>Читайте також</h2>
+      {{ m.relatedServices(post.relatedServices, services) }}
+    </aside>
+    {% endif %}
+
+    {{ m.ctaBlock("Потрібна консультація?", "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.") }}
+  </div>
+</article>
+{% endblock %}

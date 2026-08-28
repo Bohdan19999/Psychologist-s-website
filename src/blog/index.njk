@@ -1,0 +1,57 @@
+---
+active: "blog"
+permalink: "/blog/"
+title: "Блог психолога — Валентина Сваткова, Черкаси"
+description: "Статті про тривогу, стрес, стосунки та самооцінку від психолога Валентина Сваткова. Практичні поради та підтримка для ваших змін."
+canonical: "/blog/"
+---
+{% extends "base.njk" %}
+{% import "macros.njk" as m with context %}
+
+{% block head_extra %}
+{% breadcrumbJsonLd [{"label": "Головна", "href": "/"}, {"label": "Блог", "href": "/blog/"}] %}
+{% endblock %}
+
+{% block content %}
+<header class="page-header">
+  <div class="container">
+    {{ m.breadcrumbs([{"label": "Головна", "href": "/"}, {"label": "Блог"}]) }}
+    <span class="eyebrow">Блог</span>
+    <h1>Матеріали про психологічне здоров'я</h1>
+    <p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec lectus non arcu tempor cursus.</p>
+  </div>
+</header>
+<div class="container">
+  <section class="std-section">
+    <div class="grid grid-3">
+      {% for p in posts %}
+      <a class="card blog-card" href="/blog/{{ p.slug }}/">
+        <div class="thumb">{{ icons.leaf | safe }}</div>
+        <span class="tag">{{ p.tag }}</span>
+        <h3>{{ p.title }}</h3>
+        <p>{{ p.seoDescription | truncate(90) }}</p>
+        <p class="meta">{{ p.dateDisplay }} · {{ p.readingTime }}</p>
+      </a>
+      {% endfor %}
+      <div class="card blog-card" style="opacity:0.6;">
+        <div class="thumb">{{ icons.leaf | safe }}</div>
+        <span class="tag">Тривога</span>
+        <h3>Тривога напередодні змін: як з нею бути</h3>
+        <p class="meta">Незабаром</p>
+      </div>
+      <div class="card blog-card" style="opacity:0.6;">
+        <div class="thumb">{{ icons.leaf | safe }}</div>
+        <span class="tag">Адаптація</span>
+        <h3>Адаптація за кордоном: перші кроки</h3>
+        <p class="meta">Незабаром</p>
+      </div>
+      <div class="card blog-card" style="opacity:0.6;">
+        <div class="thumb">{{ icons.leaf | safe }}</div>
+        <span class="tag">Стрес</span>
+        <h3>Що таке емоційне виснаження і як його розпізнати</h3>
+        <p class="meta">Незабаром</p>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{
+  "name": "valentyna-svatkova-psy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Сайт психолога Валентини Сваткової — Eleventy + Decap CMS",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^14.0.0"
+  }
+}

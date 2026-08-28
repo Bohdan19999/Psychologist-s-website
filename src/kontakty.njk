@@ -1,0 +1,76 @@
+---
+active: "kontakty"
+permalink: "/kontakty/"
+title: "Контакти та запис на консультацію — Валентина Сваткова, Черкаси"
+description: "Запишіться на консультацію психолога Валентина Сваткова у Черкасах або онлайн. Телефон, Telegram, Viber, адреса кабінету та форма запису."
+canonical: "/kontakty/"
+---
+{% extends "base.njk" %}
+{% import "macros.njk" as m with context %}
+
+{% block head_extra %}
+{% serviceJsonLd %}
+{% breadcrumbJsonLd [{"label": "Головна", "href": "/"}, {"label": "Контакти", "href": "/kontakty/"}] %}
+{% endblock %}
+
+{% block content %}
+<header class="page-header">
+  <div class="container">
+    {{ m.breadcrumbs([{"label": "Головна", "href": "/"}, {"label": "Контакти"}]) }}
+    <span class="eyebrow">Контакти</span>
+    <h1>Записатись на консультацію</h1>
+    <p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec lectus non arcu tempor cursus.</p>
+  </div>
+</header>
+<div class="container">
+  <section class="std-section contact-grid">
+    <div>
+      <h2>Як зі мною зв'язатись</h2>
+      <ul class="contact-list">
+        <li>{{ m.iconCircle("phone") }}<a href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a></li>
+        <li>{{ m.iconCircle("telegram") }}<a href="{{ site.telegramUrl }}" target="_blank" rel="noopener">{{ site.telegramHandle }}</a></li>
+        <li>{{ m.iconCircle("viber") }}<a href="{{ site.viberUrl }}">Viber</a></li>
+        <li>{{ m.iconCircle("mail") }}<a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        <li>{{ m.iconCircle("pin") }}<span>{{ site.address }}</span></li>
+      </ul>
+      <p class="price-note" style="margin-top:1rem;">Приймаю очно за попереднім записом. Онлайн-консультації — з будь-якої точки світу.</p>
+    </div>
+    <div class="map-frame">
+      <!-- TODO: перевірити та за потреби замінити вбудовану Google Карту на точну адресу кабінету -->
+      <iframe src="{{ site.mapEmbed }}" title="Кабінет психолога на карті {{ site.city }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <section class="std-section">
+    <h2>Форма запису</h2>
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    <!-- TODO: підключити форму до Telegram-бота або email-сервісу -->
+    <form class="form-grid" id="contact-form">
+      <div class="field">
+        <label for="name">Ім'я</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="contact">Телефон або Telegram</label>
+          <input type="text" id="contact" name="contact" required autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="format">Формат консультації</label>
+          <select id="format" name="format">
+            <option value="online">Онлайн</option>
+            <option value="offline">Очно, {{ site.city }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="message">Повідомлення</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+      </div>
+      <p class="form-note">Надсилаючи форму, ви погоджуєтесь з <a href="/pryvasi-polisy/">Політикою конфіденційності</a>.</p>
+      <button type="submit" class="btn-primary btn-block">Надіслати заявку</button>
+      <p class="form-success" id="contact-form-success">Дякую! Ваше повідомлення надіслано. Я зв'яжусь з вами найближчим часом.</p>
+    </form>
+  </section>
+</div>
+{% endblock %}

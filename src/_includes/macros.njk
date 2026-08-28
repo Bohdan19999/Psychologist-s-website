@@ -1,0 +1,47 @@
+{% macro breadcrumbs(trail) %}
+<p class="breadcrumbs">{% for t in trail %}{% if t.href and not loop.last %}<a href="{{ t.href }}">{{ t.label }}</a>{% else %}<span>{{ t.label }}</span>{% endif %}{% if not loop.last %} / {% endif %}{% endfor %}</p>
+{% endmacro %}
+
+{% macro ctaBlock(heading, text, label="Записатись") %}
+<aside class="cta-block">
+  <h2>{{ heading }}</h2>
+  <p>{{ text }}</p>
+  <a href="/kontakty/" class="btn-primary">{{ label }}</a>
+</aside>
+{% endmacro %}
+
+{% macro faqBlock(items) %}
+<section class="faq">
+  <h2>Часті запитання</h2>
+  {% for item in items %}
+  <details><summary>{{ item.question }}</summary><p>{{ item.answer }}</p></details>
+  {% endfor %}
+</section>
+{% endmacro %}
+
+{% macro iconCircle(name, extraStyle="") %}
+<span class="icon-circle"{% if extraStyle %} style="{{ extraStyle }}"{% endif %}>{{ icons[name] | safe }}</span>
+{% endmacro %}
+
+{% macro serviceCard(item, ctaLabel="Дізнатись більше") %}
+<div class="card service-card">
+  {{ iconCircle(item.icon) }}
+  <h3>{{ item.title }}</h3>
+  <p>{{ item.lede | truncate(90) }}</p>
+  <a class="card-link" href="/posluhy/{{ item.slug }}/">{{ ctaLabel }} <span aria-hidden="true">{{ icons.arrow | safe }}</span></a>
+</div>
+{% endmacro %}
+
+{% macro relatedServices(slugs, allServices) %}
+{% if slugs and slugs.length %}
+<div class="grid grid-3">
+  {% for slug in slugs %}
+    {% for s in allServices %}
+      {% if s.slug == slug %}
+      {{ serviceCard(s) }}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</div>
+{% endif %}
+{% endmacro %}

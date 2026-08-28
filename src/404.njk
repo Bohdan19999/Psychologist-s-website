@@ -1,0 +1,18 @@
+---
+permalink: "/404.html"
+title: "Сторінку не знайдено — Валентина Сваткова"
+description: "Сторінку не знайдено на сайті психолога Валентина Сваткова."
+canonical: "/404.html"
+---
+{% extends "base.njk" %}
+
+{% block content %}
+<div class="container">
+  <div class="error-page">
+    <p class="code">404</p>
+    <h1>Сторінку не знайдено</h1>
+    <p class="lede">Можливо, її було переміщено або вона більше не існує. Спробуйте повернутись на головну сторінку.</p>
+    <a class="btn-primary" href="/" style="margin-top:1.5rem;">На головну</a>
+  </div>
+</div>
+{% endblock %}

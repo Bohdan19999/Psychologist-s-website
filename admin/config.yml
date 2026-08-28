@@ -1,0 +1,128 @@
+# ВАЖЛИВО: перед першим використанням /admin допишіть нижче репозиторій
+# у форматі "власник/назва-репо" (наприклад "valya-svatkova/psychologists-website")
+# — власника (ваш GitHub-логін чи організацію) я не можу вгадати наперед.
+#
+# Авторизація тут — через GitHub OAuth (не Netlify Identity/Git Gateway,
+# який Netlify більше не рекомендує для нових сайтів). Налаштування described
+# у PROGRESS.md, розділ "Деплой на Netlify".
+backend:
+  name: github
+  repo: власник/psychologists-website
+  branch: master
+
+media_folder: "public/img/uploads"
+public_folder: "/img/uploads"
+
+collections:
+  - name: "services"
+    label: "Послуги"
+    folder: "content/services"
+    create: false # 8 сторінок фіксовані, нові не потрібні
+    slug: "{{slug}}"
+    fields:
+      - { label: "H1 (назва напрямку)", name: "title", widget: "string" }
+      - { label: "Лід-абзац", name: "lede", widget: "text" }
+      - { label: "Іконка (службове, не редагувати)", name: "icon", widget: "hidden" }
+      - { label: "Ключова фраза (SEO)", name: "keyword", widget: "string" }
+      - { label: "Meta title", name: "seo_title", widget: "string" }
+      - { label: "Meta description", name: "seo_description", widget: "text" }
+      - { label: "Коли варто звернутись", name: "symptoms", widget: "markdown" }
+      - { label: "Як проходить робота", name: "approach", widget: "markdown" }
+      - { label: "Що зміниться", name: "results", widget: "markdown" }
+      - label: "FAQ"
+        name: "faq"
+        widget: "list"
+        fields:
+          - { label: "Питання", name: "question", widget: "string" }
+          - { label: "Відповідь", name: "answer", widget: "text" }
+      - label: "Пов'язані послуги (перелінковка)"
+        name: "related"
+        widget: "relation"
+        collection: "services"
+        search_fields: ["title"]
+        value_field: "{{slug}}"
+        display_fields: ["title"]
+        multiple: true
+        required: false
+
+  - name: "posts"
+    label: "Блог"
+    folder: "content/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Дата", name: "date", widget: "datetime" }
+      - { label: "Тег/категорія", name: "tag", widget: "string", required: false }
+      - { label: "Час читання", name: "readingTime", widget: "string", required: false, default: "5 хв читання" }
+      - { label: "Обкладинка", name: "cover", widget: "image", required: false }
+      - { label: "Meta description", name: "seo_description", widget: "text" }
+      - { label: "Текст статті", name: "body", widget: "markdown" }
+      - label: "FAQ"
+        name: "faq"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Питання", name: "question", widget: "string" }
+          - { label: "Відповідь", name: "answer", widget: "text" }
+      - label: "Пов'язані послуги (перелінковка)"
+        name: "related_services"
+        widget: "relation"
+        collection: "services"
+        search_fields: ["title"]
+        value_field: "{{slug}}"
+        display_fields: ["title"]
+        multiple: true
+        required: false
+
+  - name: "pages"
+    label: "Сторінки"
+    files:
+      - label: "Головна"
+        name: "home"
+        file: "content/pages/home.md"
+        fields:
+          - label: "Блок 'Я допомагаю при'"
+            name: "help_with"
+            widget: "list"
+          - { label: "Текст під блоком", name: "quote", widget: "string" }
+      - label: "Про мене"
+        name: "pro-mene"
+        file: "content/pages/pro-mene.md"
+        fields:
+          - { label: "Meta title", name: "seo_title", widget: "string" }
+          - { label: "Meta description", name: "seo_description", widget: "text" }
+          - { label: "Лід-абзац (під заголовком)", name: "lede", widget: "text" }
+          - { label: "Текст", name: "body", widget: "markdown" }
+      - label: "Онлайн-консультації"
+        name: "onlayn-konsultatsii"
+        file: "content/pages/onlayn-konsultatsii.md"
+        fields:
+          - { label: "Meta title", name: "seo_title", widget: "string" }
+          - { label: "Meta description", name: "seo_description", widget: "text" }
+          - { label: "Лід-абзац (під заголовком)", name: "lede", widget: "text" }
+          - { label: "Текст", name: "body", widget: "markdown" }
+      - label: "Для українців за кордоном"
+        name: "dlya-ukraintsiv-za-kordonom"
+        file: "content/pages/dlya-ukraintsiv-za-kordonom.md"
+        fields:
+          - { label: "Meta title", name: "seo_title", widget: "string" }
+          - { label: "Meta description", name: "seo_description", widget: "text" }
+          - { label: "Лід-абзац (під заголовком)", name: "lede", widget: "text" }
+          - { label: "Текст", name: "body", widget: "markdown" }
+      - label: "Ціни"
+        name: "tsiny"
+        file: "content/pages/tsiny.md"
+        fields:
+          - { label: "Meta title", name: "seo_title", widget: "string" }
+          - { label: "Meta description", name: "seo_description", widget: "text" }
+          - { label: "Лід-абзац (під заголовком)", name: "lede", widget: "text" }
+          - { label: "Текст (під таблицею цін)", name: "body", widget: "markdown" }
+      - label: "Політика конфіденційності"
+        name: "pryvasi-polisy"
+        file: "content/pages/pryvasi-polisy.md"
+        fields:
+          - { label: "Meta title", name: "seo_title", widget: "string" }
+          - { label: "Meta description", name: "seo_description", widget: "text" }
+          - { label: "Лід-абзац (під заголовком)", name: "lede", widget: "text" }
+          - { label: "Текст", name: "body", widget: "markdown" }

@@ -1,0 +1,38 @@
+---
+active: "posluhy"
+permalink: "/posluhy/"
+title: "Послуги психолога у Черкасах — Валентина Сваткова"
+description: "Індивідуальні консультації психолога: тривога, стрес, стосунки, травма, самооцінка, адаптація. Очно у Черкасах та онлайн."
+canonical: "/posluhy/"
+---
+{% extends "base.njk" %}
+{% import "macros.njk" as m with context %}
+
+{% block head_extra %}
+{% breadcrumbJsonLd [{"label": "Головна", "href": "/"}, {"label": "Послуги", "href": "/posluhy/"}] %}
+{% endblock %}
+
+{% block content %}
+<header class="page-header">
+  <div class="container">
+    {{ m.breadcrumbs([{"label": "Головна", "href": "/"}, {"label": "Послуги"}]) }}
+    <span class="eyebrow">Послуги</span>
+    <h1>З чим я працюю</h1>
+    <p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec lectus non arcu tempor cursus.</p>
+  </div>
+</header>
+<section class="std-section">
+  <div class="container">
+    <div class="grid grid-3">
+      {% for s in services %}
+      {{ m.serviceCard(s, "Детальніше") }}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<section class="std-section">
+  <div class="container">
+    {{ m.ctaBlock("Не знаєте, з чого почати?", "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.") }}
+  </div>
+</section>
+{% endblock %}

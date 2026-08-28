@@ -1,0 +1,27 @@
+---
+permalink: "/pryvasi-polisy/"
+canonical: "/pryvasi-polisy/"
+eleventyComputed:
+  title: "{{ pages['pryvasi-polisy'].seo_title }}"
+  description: "{{ pages['pryvasi-polisy'].seo_description }}"
+---
+{% extends "base.njk" %}
+{% import "macros.njk" as m with context %}
+{% set p = pages["pryvasi-polisy"] %}
+
+{% block head_extra %}
+{% breadcrumbJsonLd [{"label": "Головна", "href": "/"}, {"label": "Політика конфіденційності", "href": "/pryvasi-polisy/"}] %}
+{% endblock %}
+
+{% block content %}
+<header class="page-header">
+  <div class="container">
+    {{ m.breadcrumbs([{"label": "Головна", "href": "/"}, {"label": "Політика конфіденційності"}]) }}
+    <h1>Політика конфіденційності</h1>
+    <p class="lede">{{ p.lede }}</p>
+  </div>
+</header>
+<div class="container">
+  <section class="std-section legal-content">{{ p.bodyHtml | safe }}</section>
+</div>
+{% endblock %}

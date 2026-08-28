@@ -1,0 +1,34 @@
+---
+permalink: "/sitemap.xml"
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ site.domain }}/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  {% set staticPaths = ["/pro-mene/", "/posluhy/", "/onlayn-konsultatsii/", "/dlya-ukraintsiv-za-kordonom/", "/tsiny/", "/vidguky/", "/blog/", "/kontakty/", "/pryvasi-polisy/"] %}
+  {% for path in staticPaths %}
+  <url>
+    <loc>{{ site.domain }}{{ path }}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  {% endfor %}
+  {% for s in services %}
+  <url>
+    <loc>{{ site.domain }}/posluhy/{{ s.slug }}/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  {% endfor %}
+  {% for p in posts %}
+  <url>
+    <loc>{{ site.domain }}/blog/{{ p.slug }}/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  {% endfor %}
+</urlset>

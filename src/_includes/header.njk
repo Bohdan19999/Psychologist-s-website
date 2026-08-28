@@ -1,0 +1,48 @@
+<a class="skip-link" href="#main">Перейти до змісту</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">
+      <img src="/assets/img/logo.png" alt="Логотип — {{ site.name }}, психолог" width="42" height="42">
+      <span class="brand-name"><span class="name-text">{{ site.name }}</span><small>Психолог у {{ site.city }}</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Основна навігація">
+      <ul>
+        <li><a href="/"{% if active == "home" %} aria-current="page"{% endif %}>Головна</a></li>
+        <li><a href="/pro-mene/"{% if active == "pro-mene" %} aria-current="page"{% endif %}>Про мене</a></li>
+        <li class="has-dropdown{% if navExpanded %} is-expanded{% endif %}">
+          <a href="/posluhy/"{% if active == "posluhy" %} aria-current="page"{% endif %}>Послуги</a>
+          <button type="button" class="dropdown-toggle" aria-expanded="false">Послуги <span aria-hidden="true">{{ icons.chevron | safe }}</span></button>
+          <ul class="dropdown">
+            <li><a href="/posluhy/">Усі послуги</a></li>
+            {% for s in services %}
+            <li><a href="/posluhy/{{ s.slug }}/">{{ s.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        <li><a href="/onlayn-konsultatsii/"{% if active == "onlayn" %} aria-current="page"{% endif %}>Онлайн</a></li>
+        <li><a href="/dlya-ukraintsiv-za-kordonom/"{% if active == "diaspora" %} aria-current="page"{% endif %}>За кордоном</a></li>
+        <li><a href="/tsiny/"{% if active == "tsiny" %} aria-current="page"{% endif %}>Ціни</a></li>
+        <li><a href="/vidguky/"{% if active == "vidguky" %} aria-current="page"{% endif %}>Відгуки</a></li>
+        <li><a href="/blog/"{% if active == "blog" %} aria-current="page"{% endif %}>Блог</a></li>
+        <li><a href="/kontakty/"{% if active == "kontakty" %} aria-current="page"{% endif %}>Контакти</a></li>
+      </ul>
+      <div class="mobile-nav-actions">
+        <a class="btn-primary btn-block" href="/kontakty/">Записатись на консультацію</a>
+        <div class="mobile-nav-icons">
+          <a class="icon-btn" href="{{ site.telegramUrl }}" aria-label="Написати в Telegram" target="_blank" rel="noopener">{{ icons.telegram | safe }}</a>
+          <a class="icon-btn" href="{{ site.viberUrl }}" aria-label="Написати у Viber">{{ icons.viber | safe }}</a>
+          <a class="icon-btn" href="{{ site.phoneHref }}" aria-label="Зателефонувати">{{ icons.phone | safe }}</a>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-backdrop"></div>
+    <div class="header-actions">
+      <div class="header-cta-group">
+        <a class="icon-btn" href="{{ site.telegramUrl }}" aria-label="Написати в Telegram" target="_blank" rel="noopener">{{ icons.telegram | safe }}</a>
+        <a class="icon-btn" href="{{ site.viberUrl }}" aria-label="Написати у Viber">{{ icons.viber | safe }}</a>
+        <a class="btn-primary header-cta" href="/kontakty/" style="padding:0.7em 1.3em;font-size:0.9rem;">Записатись</a>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="Відкрити меню" aria-expanded="false">{{ icons.menu | safe }}</button>
+    </div>
+  </div>
+</header>
