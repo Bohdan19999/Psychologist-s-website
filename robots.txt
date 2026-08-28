@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://svatkova-psy.com.ua/sitemap.xml
