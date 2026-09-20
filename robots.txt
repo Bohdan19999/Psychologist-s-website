@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://svatkova-psy.com.ua/sitemap.xml
+Sitemap: https://valentynasvatkova.com/sitemap.xml

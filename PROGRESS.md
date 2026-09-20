@@ -63,10 +63,10 @@
 - [ ] Реальний номер телефону (зараз `+38 (000) 000-00-00`)
 - [ ] Реальний Telegram (зараз `@svatkova_psy`)
 - [ ] Реальний Viber-номер
-- [ ] Реальний email (зараз `hello@svatkova-psy.com.ua`)
+- [ ] Реальний email (зараз `hello@valentynasvatkova.com`)
 - [ ] Реальна адреса кабінету в Черкасах (зараз `вул. Хрещатика, 1, каб. 5` — вигадана) + перевірити Google-карту на `/kontakty/`
 - [ ] Реальні посилання на Instagram/Facebook
-- [ ] Реальний домен (зараз `svatkova-psy.com.ua` — використовується в canonical, sitemap, OG-тегах, JSON-LD)
+- [ ] Реальний домен (зараз `valentynasvatkova.com` — використовується в canonical, sitemap, OG-тегах, JSON-LD)
 
 ### Технічне
 - [ ] Підключити форму запису на `/kontakty/` до Telegram-бота або email-сервісу (зараз лише JS-заглушка, позначена `TODO` в коді)
