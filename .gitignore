@@ -3,3 +3,7 @@ _site/
 .cache/
 .DS_Store
 Thumbs.db
+.env
+.env.*
+env variables
+*token*.txt
