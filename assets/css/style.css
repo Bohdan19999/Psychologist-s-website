@@ -290,7 +290,7 @@ p:last-child { margin-bottom: 0; }
   .brand img { height: 32px; }
   .brand-name { min-width: 0; overflow: hidden; }
   .brand-name .name-text { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .brand-name small { display: none; }
+  .brand-name small { display: block; font-size: 0.6rem; }
   .mobile-nav-actions { display: block; margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px solid var(--color-border); }
   .mobile-nav-icons { display: flex; gap: 0.6rem; margin-top: 0.9rem; }
   .has-dropdown > a { display: none; }
