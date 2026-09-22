@@ -499,7 +499,7 @@ article > header { border-top: none; }
 }
 .cta-block h2 { color: #fff; }
 .cta-block p { color: rgba(255,255,255,0.85); max-width: 50ch; margin-left: auto; margin-right: auto; }
-.cta-block .btn-primary { background: #fff; color: var(--color-accent-dark); margin-top: var(--space-2); }
+.cta-block .btn-primary { background: #fff; color: var(--color-accent-dark); margin-top: var(--space-2); white-space: normal; max-width: 100%; text-align: center; }
 .cta-block .btn-primary:hover { background: var(--color-secondary-soft); }
 
 /* ---------- Pricing ---------- */
