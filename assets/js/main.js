@@ -10,7 +10,10 @@
     if (!nav) return;
     nav.classList.remove("is-open");
     if (backdrop) backdrop.classList.remove("is-open");
-    if (toggle) toggle.setAttribute("aria-expanded", "false");
+    if (toggle) {
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Відкрити меню");
+    }
     document.body.style.overflow = "";
   }
 
@@ -18,7 +21,10 @@
     if (!nav) return;
     nav.classList.add("is-open");
     if (backdrop) backdrop.classList.add("is-open");
-    if (toggle) toggle.setAttribute("aria-expanded", "true");
+    if (toggle) {
+      toggle.setAttribute("aria-expanded", "true");
+      toggle.setAttribute("aria-label", "Закрити меню");
+    }
     document.body.style.overflow = "hidden";
   }
 
