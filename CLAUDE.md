@@ -61,6 +61,12 @@
 
 Кожен із 8 пунктів = окрема сторінка послуги за шаблоном з розділу 5.
 
+**Додаткові напрямки** (окремі сторінки послуг, додані після SEO-аналізу; у блок «Я допомагаю при» на головній не входять):
+
+9. Депресивні стани — `/posluhy/depresyvni-stany/` (обов'язково з абзацом про межі компетенції психолога й коли потрібен лікар/психіатр)
+10. Підтримка військових, ветеранів та їхніх родин — `/posluhy/pidtrymka-viyskovykh-i-veteraniv/` (спирається на сертифікат «Кризова психологія (психологія воєнного часу)» та посвідчення волонтера ГО «Центр підтримки Атлант»)
+11. Психолог для підлітків від 14 років — `/posluhy/psykholoh-dlya-pidlitkiv/` (вікова межа 14+ — не змінювати без підтвердження)
+
 ---
 
 ## 4. Структура сайту (сайтмап)
@@ -76,7 +82,10 @@
 /posluhy/rozluchennya-vtrata-zminy/
 /posluhy/rozlady-kharchovoi-povedinky/
 /posluhy/samootsinka-pryynyattya-sebe/
-/posluhy/adaptatsiya-pislya-pereizdu/
+/posluhy/adaptatsiya-pislya-pereizdu/   (фокус: внутрішній переїзд і ВПО; закордон — на /dlya-ukraintsiv-za-kordonom/)
+/posluhy/depresyvni-stany/
+/posluhy/pidtrymka-viyskovykh-i-veteraniv/
+/posluhy/psykholoh-dlya-pidlitkiv/
 /onlayn-konsultatsii/     Формат онлайн-сесій + FAQ
 /dlya-ukraintsiv-za-kordonom/   Окрема сторінка під діаспору (EUR-ціни)
 /vidguky/                 Відгуки
@@ -94,7 +103,7 @@
 ├── index.html
 ├── pro-mene/index.html
 ├── posluhy/index.html
-├── posluhy/[8 папок]/index.html
+├── posluhy/[11 папок]/index.html
 ├── onlayn-konsultatsii/index.html
 ├── dlya-ukraintsiv-za-kordonom/index.html
 ├── vidguky/index.html
@@ -242,6 +251,7 @@
 - Згенерувати `sitemap.xml` з усіма сторінками
 - `robots.txt` з посиланням на sitemap
 - Локальне SEO: вбудована Google Карта з локацією кабінету в Черкасах на `/kontakty/`, NAP (ім'я/адреса/телефон) однаковий у футері й на сторінці контактів
+- **Адреса:** постійного кабінету немає — приміщення для очних консультацій орендується під зустрічі. Тому мапа на `/kontakty/` навмисно показує центр Черкас (`q=Cherkasy`), а в JSON-LD `PostalAddress` лише `addressLocality: "Черкаси"` + `addressCountry: "UA"` — без `streetAddress`, `postalCode` і `geo`. Точна адреса повідомляється клієнту під час запису. Не вигадувати й не додавати адресу.
 - Оптимізація зображень (WebP + fallback, `loading="lazy"` для всього нижче першого екрана)
 - Мінімальний і акуратний CSS/JS без зайвих залежностей — швидкість завантаження критична для SEO
 
