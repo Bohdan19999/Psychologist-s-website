@@ -59,69 +59,66 @@
 
 **Бейдж:** "Працюю онлайн" (іконка глобуса) — постав поруч бейдж "Приймаю очно в Черкасах", бо практика гібридна.
 
-Кожен із 8 пунктів = окрема сторінка послуги за шаблоном з розділу 5.
+Кожен напрямок = картка в секції `#posluhy` лендингу (окремих сторінок послуг більше немає — див. розділ 4). З 2026-10-20 окремого нумерованого списку з 8 пунктів на лендингу немає: заголовок «Я допомагаю при:» стоїть над сіткою карток, а цитата — у блоці-містку після hero (рішення клієнта, щоб скоротити шлях від hero до послуг).
 
-**Додаткові напрямки** (окремі сторінки послуг, додані після SEO-аналізу; у блок «Я допомагаю при» на головній не входять):
+**Додаткові напрямки** (додані після SEO-аналізу; тепер — картки в `#posluhy`, у нумерований блок «Я допомагаю при» не входять):
 
-9. Депресивні стани — `/posluhy/depresyvni-stany/` (обов'язково з абзацом про межі компетенції психолога й коли потрібен лікар/психіатр)
-10. Підтримка військових, ветеранів та їхніх родин — `/posluhy/pidtrymka-viyskovykh-i-veteraniv/` (спирається на сертифікат «Кризова психологія (психологія воєнного часу)» та посвідчення волонтера ГО «Центр підтримки Атлант»)
-11. Психолог для підлітків від 14 років — `/posluhy/psykholoh-dlya-pidlitkiv/` (вікова межа 14+ — не змінювати без підтвердження)
+9. Депресивні стани — `#posluha-depresyvni-stany` (обов'язково з абзацом про межі компетенції психолога й коли потрібен лікар/психіатр)
+10. Підтримка військових, ветеранів та їхніх родин — `#posluha-viyskovi` (спирається на сертифікат «Кризова психологія (психологія воєнного часу)» та посвідчення волонтера ГО «Центр підтримки Атлант»)
+11. Психолог для підлітків від 14 років — `#posluha-pidlitky` (вікова межа 14+ — не змінювати без підтвердження)
 
 ---
 
 ## 4. Структура сайту (сайтмап)
 
+**Актуально з 2026-10-19:** сайт — **односторінковий лендинг (`index.html`) з якорними секціями** + окремі сторінки `/kontakty/`, `/pryvasi-polisy/`, `404.html`. `/blog/` існує фізично, але поки не в навігації, не в футері й не в `sitemap.xml` (повернути, коли з'являться реальні статті).
+
 ```
-/                         Головна
-/pro-mene/                Про мене (сторінка автора)
-/posluhy/                 Послуги — індекс, картки всіх 8 напрямків
-/posluhy/tryvoga-paniчni-ataky/
-/posluhy/emotsiyne-vysnazhennya-stres/
-/posluhy/travmatychnyy-dosvid/
-/posluhy/kryzy-u-stosunkakh/
-/posluhy/rozluchennya-vtrata-zminy/
-/posluhy/rozlady-kharchovoi-povedinky/
-/posluhy/samootsinka-pryynyattya-sebe/
-/posluhy/adaptatsiya-pislya-pereizdu/   (фокус: внутрішній переїзд і ВПО; закордон — на /dlya-ukraintsiv-za-kordonom/)
-/posluhy/depresyvni-stany/
-/posluhy/pidtrymka-viyskovykh-i-veteraniv/
-/posluhy/psykholoh-dlya-pidlitkiv/
-/onlayn-konsultatsii/     Формат онлайн-сесій + FAQ
-/dlya-ukraintsiv-za-kordonom/   Окрема сторінка під діаспору (EUR-ціни)
-/vidguky/                 Відгуки
-/blog/                    Індекс блогу
-/blog/[slug]/             Шаблон статті (див. розділ 5)
-/kontakty/                Контакти, запис, мапа Черкас
-/pryvasi-polisy/          Політика конфіденційності
+/                  Лендинг (index.html), секції по порядку (з 2026-10-20):
+  hero             Головний екран (h1, фото, бейджі, CTA → /kontakty/ та #formaty)
+  .bridge          Місток-емпатія: цитата Marck Script + 2–3 речення, перехід до карток (без id)
+  #posluhy         h2 «Я допомагаю при:» + 11 карток послуг (#posluha-...) з розгортанням <details>
+  #formaty         #formaty-onlayn (очно/онлайн) + #formaty-za-kordonom (діаспора, часові пояси)
+  #pro-mene        Компактно: аватар + вступ, «Підхід у роботі», «Чому мені можна довіряти»;
+                   освіта й сертифікати — в акордеоні <details class="about-more">
+  #vidguky         Відгуки (сітка; «Показати ще» з'являється, якщо відгуків > data-visible)
+  #faq             Об'єднане FAQ (8 питань) — FAQPage JSON-LD генерується з цього ж тексту
+  #kontakty        Фінальний CTA: кнопка на /kontakty/, Telegram, телефон, email
+/kontakty/         Окрема сторінка запису: форма, контакти, мапа Черкас
+/pryvasi-polisy/   Політика конфіденційності
 404.html
+/blog/             Фізично є, але НЕ в навігації й НЕ в sitemap (тимчасово)
 ```
+
+Якорі карток послуг: `#posluha-tryvoga`, `#posluha-depresyvni-stany`, `#posluha-vysnazhennya`, `#posluha-travma`, `#posluha-viyskovi`, `#posluha-stosunky`, `#posluha-vtrata`, `#posluha-rkhp`, `#posluha-samootsinka`, `#posluha-adaptatsiya`, `#posluha-pidlitky`.
+
+**Меню** (однакове на всіх сторінках, порядок = порядок секцій): Послуги, Формати роботи, Про мене, Відгуки, Контакти. На `index.html` посилання мають вигляд `#якір`, на інших сторінках — `/#якір`. Усі кнопки «Записатись» ведуть на `/kontakty/`, а не на якір.
+
+**Старі окремі сторінки** `/pro-mene/`, `/posluhy/` (індекс і 11 сторінок послуг), `/onlayn-konsultatsii/`, `/dlya-ukraintsiv-za-kordonom/`, `/vidguky/` **фізично лишаються в репозиторії як архів повних текстів**, але ніде не лінкуються й закриті 301-редіректами з `force = true` у `netlify.toml` (→ `/#posluhy`, `/#pro-mene`, `/#formaty`, `/#vidguky`). Не редагувати їх і не додавати на них посилань — правити треба відповідні секції `index.html`.
+
+**JSON-LD на `index.html`:** один `Person`, один `ProfessionalService` (`hasOfferCatalog` — 11 `Offer`/`Service` з назвою й описом, без `url`), один `FAQPage`. `/kontakty/` має власний `ProfessionalService` (той самий `@id`) + `BreadcrumbList`.
 
 **Технічна файлова структура:**
 
 ```
 /
-├── index.html
-├── pro-mene/index.html
-├── posluhy/index.html
-├── posluhy/[11 папок]/index.html
-├── onlayn-konsultatsii/index.html
-├── dlya-ukraintsiv-za-kordonom/index.html
-├── vidguky/index.html
-├── blog/index.html
-├── blog/[приклад-статті]/index.html
+├── index.html                      лендинг
 ├── kontakty/index.html
 ├── pryvasi-polisy/index.html
 ├── 404.html
+├── blog/index.html                 (не в навігації)
+├── pro-mene/, posluhy/, onlayn-konsultatsii/,
+│   dlya-ukraintsiv-za-kordonom/, vidguky/   архів, 301-редірект
 ├── assets/
 │   ├── css/style.css
 │   ├── js/main.js
-│   ├── img/ (логотип, фото, іконки)
-│   └── fonts/ (якщо не через Google Fonts CDN)
-├── sitemap.xml
+│   └── img/ (логотип, фото, іконки, certificates/)
+├── netlify.toml                    редіректи, заголовки, функції
+├── sitemap.xml                     лише /, /kontakty/, /pryvasi-polisy/
 └── robots.txt
 ```
 
-**Примітка:** сторінки `/tsiny/` (Ціни) на сайті немає й не буде — рішення не публікувати ціни окремою сторінкою ухвалено свідомо. Вартість консультації клієнт озвучує особисто (див. `/dlya-ukraintsiv-za-kordonom/` та `/kontakty/`).
+**Примітка:** сторінки `/tsiny/` (Ціни) на сайті немає й не буде — рішення не публікувати ціни окремою сторінкою ухвалено свідомо. Вартість консультації клієнт озвучує особисто (див. `#formaty-za-kordonom` та `/kontakty/`).
 
 Верстка адаптивна (мобільна версія — пріоритет, бо частина трафіку йде з телефонів). Ванільний HTML/CSS/JS, без збірщиків — щоб легко редагувати вручну.
 
@@ -129,7 +126,9 @@
 
 ## 5. Шаблон сторінки послуги
 
-Кожна з 8 сторінок `/posluhy/[slug]/` має однакову структуру розмітки (текст — лорем іпсум, заповню пізніше):
+> **Історичний розділ.** Окремих сторінок послуг більше немає (див. розділ 4): кожен напрямок — картка з розгортанням у `#posluhy`. Шаблон нижче описує архівні файли `/posluhy/[slug]/`.
+
+Кожна з 8 сторінок `/posluhy/[slug]/` мала однакову структуру розмітки:
 
 ```html
 <article>

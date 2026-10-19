@@ -1,6 +1,30 @@
 (function () {
   "use strict";
 
+  // Reload (F5) always opens the page at the top: drop the anchor left in the URL by menu clicks,
+  // and don't let the browser restore the old scroll position. A shared /#vidguky link opened in
+  // a new tab is a "navigate", not a "reload", so it still scrolls to its section.
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  var navEntry = performance.getEntriesByType ? performance.getEntriesByType("navigation")[0] : null;
+  var isReload = navEntry ? navEntry.type === "reload" : (performance.navigation && performance.navigation.type === 1);
+  if (isReload) {
+    var userScrolled = false;
+    var markScrolled = function () { userScrolled = true; };
+    var jumpToTop = function () {
+      if (userScrolled) return;
+      var root = document.documentElement;
+      root.style.scrollBehavior = "auto"; // no visible smooth-scroll animation back up
+      window.scrollTo(0, 0);
+      root.style.scrollBehavior = "";
+    };
+    if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+    ["wheel", "touchstart", "keydown"].forEach(function (ev) {
+      window.addEventListener(ev, markScrolled, { once: true, passive: true });
+    });
+    jumpToTop();
+    window.addEventListener("load", jumpToTop);
+  }
+
   // Mobile navigation toggle
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.querySelector(".main-nav");
@@ -40,46 +64,77 @@
   }
   if (backdrop) backdrop.addEventListener("click", closeNav);
 
-  // Close mobile nav when a link is clicked (not the dropdown toggle)
+  // Close mobile nav when a link is clicked (anchor links scroll the landing page)
   document.querySelectorAll(".main-nav a").forEach(function (link) {
     link.addEventListener("click", closeNav);
   });
 
-  // Services dropdown — click/tap toggle (works alongside CSS :hover on desktop)
-  var dropdownToggle = document.querySelector(".dropdown-toggle");
-  var dropdownParent = document.querySelector(".has-dropdown");
-
-  function closeDropdown() {
-    if (!dropdownParent) return;
-    dropdownParent.classList.remove("is-expanded");
-    if (dropdownToggle) dropdownToggle.setAttribute("aria-expanded", "false");
-  }
-
-  if (dropdownToggle && dropdownParent) {
-    dropdownToggle.addEventListener("click", function () {
-      var expanded = dropdownParent.classList.toggle("is-expanded");
-      dropdownToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
-    });
-
-    // Close when focus leaves the dropdown entirely (e.g. Tab past the last item)
-    dropdownParent.addEventListener("focusout", function (e) {
-      if (!dropdownParent.contains(e.relatedTarget)) closeDropdown();
-    });
-  }
-
-  // Close dropdown on click/tap outside it
-  document.addEventListener("click", function (e) {
-    if (dropdownParent && !dropdownParent.contains(e.target)) closeDropdown();
-  });
-
-  // Close mobile nav and dropdown on escape
+  // Close mobile nav on escape
   document.addEventListener("keydown", function (e) {
-    if (e.key !== "Escape") return;
-    closeNav();
-    var wasExpanded = dropdownParent && dropdownParent.classList.contains("is-expanded");
-    closeDropdown();
-    if (wasExpanded && dropdownToggle) dropdownToggle.focus();
+    if (e.key === "Escape") closeNav();
   });
+
+  // Arriving from another page via /#anchor: web fonts swap in after the initial jump and shift
+  // the layout, so re-align the target once fonts are ready (otherwise it ends up under the header).
+  // Skipped on reload — the hash has already been cleared above.
+  if (!isReload && location.hash.length > 1 && document.fonts && document.fonts.ready) {
+    var hashTarget = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (hashTarget) {
+      document.fonts.ready.then(function () { hashTarget.scrollIntoView({ block: "start" }); });
+    }
+  }
+
+  // Anchor menu — highlight the section currently in view (landing page only)
+  var spyLinks = Array.prototype.slice.call(document.querySelectorAll('.main-nav a[href^="#"]'));
+  if (spyLinks.length && "IntersectionObserver" in window) {
+    var spyMap = {};
+    spyLinks.forEach(function (link) { spyMap[link.getAttribute("href").slice(1)] = link; });
+    var spyObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        spyLinks.forEach(function (link) { link.classList.remove("is-active"); });
+        // Hero and FAQ have no menu item — entering them clears the highlight
+        if (spyMap[entry.target.id]) spyMap[entry.target.id].classList.add("is-active");
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    document.querySelectorAll("main > section").forEach(function (section) {
+      spyObserver.observe(section);
+    });
+  }
+
+  // Service cards — an opened card spans the full row; keep it in view after the grid reflows
+  document.querySelectorAll(".service-card .service-more").forEach(function (details) {
+    var card = details.closest(".service-card");
+    details.addEventListener("toggle", function () {
+      card.classList.toggle("is-open", details.open);
+      if (!details.open) return;
+      var top = card.getBoundingClientRect().top;
+      if (top < 80 || top > window.innerHeight * 0.6) {
+        card.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
+
+  // Testimonials — show the first N, reveal the rest with "Показати ще"
+  var testimonials = document.querySelector(".testimonials[data-visible]");
+  if (testimonials) {
+    var limit = parseInt(testimonials.getAttribute("data-visible"), 10) || 6;
+    var items = testimonials.querySelectorAll(".testimonial");
+    var moreWrap = document.querySelector(".testimonials-more-wrap");
+    if (items.length > limit && moreWrap) {
+      for (var i = limit; i < items.length; i++) items[i].classList.add("is-hidden");
+      moreWrap.hidden = false;
+      moreWrap.querySelector("button").addEventListener("click", function () {
+        var firstHidden = testimonials.querySelector(".testimonial.is-hidden");
+        testimonials.querySelectorAll(".testimonial.is-hidden").forEach(function (item) { item.classList.remove("is-hidden"); });
+        moreWrap.hidden = true;
+        if (firstHidden) {
+          firstHidden.setAttribute("tabindex", "-1");
+          firstHidden.focus();
+        }
+      });
+    }
+  }
 
   // Certificates carousel — one scrollable row with prev/next arrows and keyboard control
   var certCarousel = document.querySelector(".cert-carousel");

@@ -5,6 +5,76 @@
 [functions]
   directory = "netlify/functions"
 
+# --- Односторінковий лендинг: старі URL (вже в індексі Google) -> якорі на головній ---
+# force = true обов'язковий: HTML-файли старих сторінок лишаються в репозиторії,
+# а без force Netlify віддав би існуючий файл замість редіректу.
+[[redirects]]
+  from = "/posluhy/"
+  to = "/#posluhy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/posluhy/*"
+  to = "/#posluhy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pro-mene/"
+  to = "/#pro-mene"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/onlayn-konsultatsii/"
+  to = "/#formaty"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dlya-ukraintsiv-za-kordonom/"
+  to = "/#formaty"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vidguky/"
+  to = "/#vidguky"
+  status = 301
+  force = true
+
+# --- Робочі файли проєкту не віддаємо публічно (publish = "." викладає всю папку) ---
+[[redirects]]
+  from = "/CLAUDE.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/content-template.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/seo-analiz.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/netlify autorisation.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/netlify%20autorisation.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
 [[redirects]]
   from = "/*"
   to = "/404.html"

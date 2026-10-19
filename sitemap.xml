@@ -2,117 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://valentynasvatkova.com/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://valentynasvatkova.com/posluhy/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://valentynasvatkova.com/posluhy/tryvoga-panichni-ataky/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://valentynasvatkova.com/posluhy/depresyvni-stany/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://valentynasvatkova.com/posluhy/emotsiyne-vysnazhennya-stres/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://valentynasvatkova.com/posluhy/travmatychnyy-dosvid/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://valentynasvatkova.com/posluhy/pidtrymka-viyskovykh-i-veteraniv/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://valentynasvatkova.com/posluhy/kryzy-u-stosunkakh/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://valentynasvatkova.com/posluhy/rozluchennya-vtrata-zminy/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://valentynasvatkova.com/posluhy/rozlady-kharchovoi-povedinky/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://valentynasvatkova.com/posluhy/samootsinka-pryynyattya-sebe/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://valentynasvatkova.com/posluhy/adaptatsiya-pislya-pereizdu/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://valentynasvatkova.com/posluhy/psykholoh-dlya-pidlitkiv/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://valentynasvatkova.com/onlayn-konsultatsii/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://valentynasvatkova.com/dlya-ukraintsiv-za-kordonom/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://valentynasvatkova.com/pro-mene/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://valentynasvatkova.com/kontakty/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://valentynasvatkova.com/vidguky/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://valentynasvatkova.com/pryvasi-polisy/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-  <!-- /blog/ тимчасово виключено (noindex) — повернути після публікації перших статей -->
+  <!-- Односторінковий лендинг: старі сторінки (/posluhy/..., /pro-mene/, /onlayn-konsultatsii/,
+       /dlya-ukraintsiv-za-kordonom/, /vidguky/) редіректяться 301 на якорі головної (netlify.toml).
+       /blog/ тимчасово виключено — повернути після публікації перших статей. -->
 </urlset>
