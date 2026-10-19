@@ -454,19 +454,16 @@ article > header { border-top: none; }
 /* ---------- Landing: місток між hero та послугами ---------- */
 .bridge { padding: var(--space-4) 0; }
 .bridge-inner { max-width: 760px; text-align: center; }
+.bridge .helps-quote { margin: 0 auto var(--space-3); }
+.bridge-text { font-size: 1.12rem; color: var(--color-text); }
 @media (max-width: 640px) {
   /* від кінця hero до карток — не більше одного екрана */
   .bridge { padding: var(--space-3) 0; }
   .bridge .helps-quote { font-size: 1.3rem; margin-bottom: var(--space-2); }
   .bridge-text { font-size: 1.02rem; }
-  .bridge-down { margin-top: var(--space-1); }
   #posluhy { padding-top: var(--space-4); }
   #posluhy .section-head { margin-bottom: var(--space-3); }
 }
-.bridge .helps-quote { margin: 0 auto var(--space-3); }
-.bridge-text { font-size: 1.12rem; color: var(--color-text); }
-.bridge-down { display: inline-flex; align-items: center; gap: 0.35em; min-height: 44px; margin-top: var(--space-2); font-weight: 700; color: var(--color-accent); }
-.bridge-down svg { width: 18px; height: 18px; flex-shrink: 0; }
 
 /* ---------- Landing: Про мене (компактна) ---------- */
 .about-head { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); }
