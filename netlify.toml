@@ -76,6 +76,18 @@
   force = true
 
 [[redirects]]
+  from = "/env variables"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/env%20variables"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/404.html"
   status = 404

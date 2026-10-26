@@ -15,8 +15,11 @@ exports.handler = async function (event) {
     return { statusCode: 400, body: "Invalid payload" };
   }
 
-  const payload = body && body.payload;
+  // Outgoing webhook надсилає заявку на верхньому рівні ({ form_name, data, ... }),
+  // а подієва функція submission-created — обгорнуту в { payload: {...} }. Приймаємо обидва.
+  const payload = body && (body.payload || body);
   if (!payload || payload.form_name !== "kontakty") {
+    console.warn("Ignored submission, form_name =", payload && payload.form_name);
     return { statusCode: 200, body: "Ignored" };
   }
 

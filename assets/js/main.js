@@ -244,7 +244,8 @@
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: body
       })
-        .then(function () {
+        .then(function (res) {
+          if (!res.ok) throw new Error("Form submit failed: " + res.status);
           contactForm.reset();
           if (success) {
             success.classList.add("is-visible");
