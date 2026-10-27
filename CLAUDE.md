@@ -293,6 +293,6 @@
 1. Перевірити валідність HTML і коректність усіх JSON-LD блоків (через Google Rich Results Test)
 2. Замінити лорем іпсум на реальні тексти сторінок послуг і статті блогу (я напишу окремо)
 3. Додати реальні фото психолога
-4. Підключити форму запису до Telegram-бота або email
+4. ~~Підключити форму запису до Telegram-бота або email~~ — **зроблено 2026-10-26.** Схема: форма `kontakty` → Netlify Forms → Submission notification «HTTP POST request» на `https://valentynasvatkova.com/.netlify/functions/telegram-notify` → бот @valentyna_svatkova_bot. Токен і chat id — лише у змінних середовища Netlify (`TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`) і в локальному файлі `env variables` (у `.gitignore`, у репозиторій не комітити). Після зміни змінних потрібен новий деплой. Netlify вимикає хук після 6 помилок поспіль — тоді його треба створити заново.
 5. Зареєструвати сайт у Google Search Console, надіслати sitemap.xml
 6. Створити/оновити Google Business Profile для локального SEO по Черкасах
